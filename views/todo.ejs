@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+<title>Todo App</title>
+<link rel="stylesheet" href="/static/stylesheets/style.css" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+<div class="todo-container">
+<h2>To-Do List</h2>
+<div class="todo">
+<form action="/" method="POST" class="todo-header">
+<input type="text"  name="content">
+<button type="submit"><span class="fas fa-plus"></span></button>
+</form>
+<br>
+<h3><center>Not Completed:</center></h3>
+<ul class="todo-list">
+    <% todoTasks.forEach(details => { %>
+<% if(details.completed == false ) { %> 
+    <li class="todo-list-item">
+<div class="todo-list-item-name" >
+<%= details.content %> 
+</div>
+
+<a href="/taskdone/<%= details._id %>"  class="tick"><span class="fas fa-check tooltip"><span class="tooltiptext">Complete</span></span></a>
+
+<a href="/tasknotdone/<%= details._id %>" class="cleaner"><span class="fas fa-eraser tooltiptwo"><span class="tooltiptwotext">Not Complete</span></span></a>
+
+<a href="/edit/<%= details._id %>" class="edit"> 
+<span class="fas fa-edit tooltip"><span class="tooltiptext">Edit</span></span>
+</a>
+<a href="/remove/<%= details._id %>" class="remove"> 
+<span class="fas fa-times tooltiptwo"><span class="tooltiptwotext">Remove</span>
+</a>
+</li>
+
+<% } %>
+
+<% }) %>
+
+</ul>
+
+</div>
+<br>
+<div class="todo">
+    <ul class="todo-list">
+<h3><center> Completed:</center></h3>
+    <% todoTasks.forEach(details => { %>
+       
+        
+<% if(details.completed == true ) { %> 
+    <li class="todo-list-item">
+<div class="todo-list-item-name" >
+    <strike><%= details.content %></strike>
+</div>
+<a href="/taskdone/<%= details._id %>"  class="tick"><span class="fas fa-check tooltip"><span class="tooltiptext">Complete</span></span></a>
+
+<a href="/tasknotdone/<%= details._id %>" class="cleaner"><span class="fas fa-eraser tooltiptwo"><span class="tooltiptwotext">Not Complete</span></span></a>
+
+<a href="/edit/<%= details._id %>" class="edit"> 
+<span class="fas fa-edit tooltip"><span class="tooltiptext">Edit</span></span>
+</a>
+<a href="/remove/<%= details._id %>" class="remove"> 
+<span class="fas fa-times tooltiptwo"><span class="tooltiptwotext">Remove</span>
+</a>
+
+
+<% } %>
+</li>
+<% }) %>
+</ul>
+</div>
+</div>
+</body>
