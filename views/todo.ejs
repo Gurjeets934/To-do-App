@@ -5,14 +5,30 @@
 <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
 integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<style>
+
+::-webkit-input-placeholder { /* Edge */
+  color: red;
+}
+
+:-ms-input-placeholder { /* Internet Explorer */
+  color: red;
+}
+
+::placeholder {
+  color: rgb(187, 187, 187);
+  
+}
+
+</style>
 </head>
 <body>
 <div class="todo-container">
 <h2>To-Do List</h2>
 <div class="todo">
 <form action="/" method="POST" class="todo-header">
-<input type="text"  name="content">
-<button type="submit"><span class="fas fa-plus"></span></button>
+<input type="text"  name="content" placeholder="Enter your to-do" style="padding: 10px 10px 10px 10px;">
+<button type="submit"><span class="fas fa-plus tooltipfirst"><span class="tooltipfirsttext">Add Task</span></span></button>
 </form>
 <br>
 <h3><center>Not Completed:</center></h3>
